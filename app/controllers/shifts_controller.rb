@@ -1,0 +1,3 @@
+class ShiftsController < ApplicationController
+
+end
