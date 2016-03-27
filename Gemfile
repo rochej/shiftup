@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+# Use haml
+gem "haml-rails", "~> 0.9"
+# Use react
+gem 'react-rails', '~> 1.6.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
