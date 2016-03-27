@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+# Use serializer
+gem 'active_model_serializers'
+
 # Use haml
 gem "haml-rails", "~> 0.9"
 # Use react

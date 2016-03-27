@@ -2,10 +2,28 @@ var Shift = React.createClass({
   render: function(){
     return(
       <div className="shift">
-        <p>{this.props.giver_id} </p>
-        {this.props.datetime}
-        {this.props.covered}
+        <StatusBar covered={this.props.covered}/>
+        <p>
+          {this.props.giver_name}
+          {this.props.datetime}
+        </p>
       </div>
+    )
+  }
+})
+
+var StatusBar = React.createClass({
+  render: function(){
+    return(
+    // {
+    //   this.props.covered == 'true'
+    //   ? <div className = "statusBar" backgroundColor="green">
+    //   :
+    // }
+    <div className = "statusBar" backgroundColor="red">
+      StatusBar
+      {this.props.covered}
+    </div>
     )
   }
 })
@@ -14,7 +32,7 @@ var ShiftList = React.createClass({
   render: function(){
     var shiftNodes = this.props.data.map(function(shift){
       return(
-         <Shift giver_id={shift.giver_id} datetime={shift.datetime} covered={shift.covered} key={shift.id}>
+         <Shift giver_name={shift.giver.name} datetime={shift.datetime} covered={shift.covered} key={shift.id}>
       </Shift>
       );
     });
@@ -33,7 +51,7 @@ var ShiftBox = React.createClass({
       dataType: 'json',
       cache: false,
       success: function (data){
-        this.setState({data: data});
+        this.setState({data: data.shifts});
       }.bind(this),
       error: function(xhr, status, err){
         console.error(status)
