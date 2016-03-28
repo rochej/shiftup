@@ -14,15 +14,14 @@ var Shift = React.createClass({
 
 var StatusBar = React.createClass({
   render: function(){
+    var divRed = {
+      backgroundColor: '#F02F18'
+    }
+    var divGreen = {
+      backgroundColor: '#33FF98'
+    }
     return(
-    // {
-    //   this.props.covered == 'true'
-    //   ? <div className = "statusBar" backgroundColor="green">
-    //   :
-    // }
-    <div className = "statusBar" backgroundColor="red">
-      StatusBar
-      {this.props.covered}
+      <div className = "statusBar" style={this.props.covered == true ? divGreen : divRed}>
     </div>
     )
   }

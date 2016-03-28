@@ -12,5 +12,11 @@
     .container
       .row
         .nav.u-full-width
-          %h1 ShiftUp
+          .row
+            .five.columns
+              %h1 ShiftUp
+            .seven.columns
+              =react_component('LoginBox', url: "/sessions")
+
+
       = yield

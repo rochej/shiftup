@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327154630) do
+ActiveRecord::Schema.define(version: 20160327221048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160327154630) do
     t.integer  "giver_id"
     t.integer  "taker_id"
     t.datetime "datetime"
-    t.boolean  "covered"
+    t.boolean  "covered",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160327154630) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end
