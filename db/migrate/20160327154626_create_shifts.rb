@@ -4,7 +4,7 @@ class CreateShifts < ActiveRecord::Migration
       t.references :giver
       t.references :taker
       t.datetime :datetime
-      t.boolean :covered
+      t.boolean :covered, default: false
       t.timestamps
     end
   end
