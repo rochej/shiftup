@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
-  resources :users do
-    resources :shifts
+
+  resources :shifts do
+    resources :offers, only: [:create]
   end
 
   root 'shifts#index'
