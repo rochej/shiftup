@@ -13,17 +13,17 @@ var OfferButtons = React.createClass({
         <button
           className="offer offerYes"
           value="yes"
-          onClick={this.buttonClick}> Y
+          onClick={this.buttonClick}>Y
         </button>
         <button
           className="offer offerMaybe"
           value="maybe"
-          onClick={this.buttonClick}> M
+          onClick={this.buttonClick}>M
         </button>
         <button
           className="offer offerNo"
           value="no"
-          onClick={this.buttonClick}> N
+          onClick={this.buttonClick}>N
         </button>
       </div>
     )
