@@ -56,7 +56,7 @@ var LoginBox = React.createClass({
       }.bind(this),
       error: function(data){
         console.log("failed login")
-      }.bind(this),
+          }.bind(this),
     })
   },
 

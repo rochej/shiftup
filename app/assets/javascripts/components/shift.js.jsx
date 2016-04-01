@@ -7,6 +7,7 @@ var Shift = React.createClass({
           {this.props.giver_name}
           {this.props.datetime}
         </p>
+        <OfferBox shift_id={this.props.shift_id} key={this.props.shift_id} />
       </div>
     )
   }
@@ -31,8 +32,8 @@ var ShiftList = React.createClass({
   render: function(){
     var shiftNodes = this.props.data.map(function(shift){
       return(
-         <Shift giver_name={shift.giver.name} datetime={shift.datetime} covered={shift.covered} key={shift.id}>
-      </Shift>
+         <Shift giver_name={shift.giver.name} datetime={shift.datetime} covered={shift.covered} shift_id={shift.id} key={shift.id}>
+        </Shift>
       );
     });
     return(
@@ -54,7 +55,7 @@ var ShiftBox = React.createClass({
       }.bind(this),
       error: function(xhr, status, err){
         console.error(status)
-      }
+      }.bind(this)
     })
   },
   getInitialState: function(){
@@ -62,6 +63,7 @@ var ShiftBox = React.createClass({
   },
   componentDidMount: function () {
     this.loadShiftsFromServer();
+    setInterval(this.loadShiftsFromServer, this.props.pollInterval)
   },
 
   render: function(){
