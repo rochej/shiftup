@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require classnames
 //= require jquery_ujs
 //= require turbolinks
 //= require react

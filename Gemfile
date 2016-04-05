@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
+
+gem 'bundler', '>= 1.8.4'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-classnames'
+end
+
 # Use bcrypt
 gem 'bcrypt', '~> 3.1.7'
 

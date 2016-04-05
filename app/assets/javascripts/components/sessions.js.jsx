@@ -45,7 +45,6 @@ var LoginBox = React.createClass({
   },
   handleLoginSubmit: function(session){
     var session = session
-    debugger;
     $.ajax({
       url: this.props.url,
       dataType: 'json',

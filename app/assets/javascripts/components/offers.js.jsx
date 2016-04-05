@@ -1,36 +1,81 @@
-
-var OfferButtons = React.createClass({
+var OfferButtonNo = React.createClass({
   getInitialState: function(){
-    return {type: ''}
+    return {type: '', isPressed: false}
   },
   buttonClick: function(e){
-    this.setState({type: e.target.value});
+    this.setState({type: e.target.value, isPressed: true});
     this.props.onSubmit({type: e.target.value});
   },
   render: function(){
+    var btnClassNo = classNames({
+      'offer': true,
+      'offerNo': true,
+      'selectedNo': this.state.isPressed,
+    })
     return(
-      <div className="offerButtons">
-        <button
-          className="offer offerYes"
-          value="yes"
-          onClick={this.buttonClick}>Y
-        </button>
-        <button
-          className="offer offerMaybe"
-          value="maybe"
-          onClick={this.buttonClick}>M
-        </button>
-        <button
-          className="offer offerNo"
-          value="no"
-          onClick={this.buttonClick}>N
-        </button>
-      </div>
+      <button
+        className={btnClassNo}
+        value="no"
+        onClick={this.buttonClick}>N
+      </button>
+    )
+  }
+})
+
+var OfferButtonMaybe = React.createClass({
+  getInitialState: function(){
+    return {type: '', isPressed: false}
+  },
+  buttonClick: function(e){
+    this.setState({type: e.target.value, isPressed: true});
+    this.props.onSubmit({type: e.target.value});
+  },
+  render: function(){
+    var btnClassMaybe = classNames({
+      'offer': true,
+      'offerMaybe': true,
+      'selectedMaybe': this.state.isPressed,
+    })
+    return(
+      <button
+        className= {btnClassMaybe}
+        value="maybe"
+        onClick={this.buttonClick}>M
+      </button>
+    )
+
+  }
+})
+
+var OfferButtonYes = React.createClass({
+  getInitialState: function(){
+    return {type: '', isPressed: false}
+  },
+  buttonClick: function(e){
+    this.setState({type: e.target.value, isPressed: true});
+    this.props.onSubmit({type: e.target.value});
+  },
+  render: function(){
+    var btnClassYes = classNames({
+      'offer': true,
+      'offerYes': true,
+      'selectedYes': this.state.isPressed,
+    })
+    return(
+      <button
+        className= {btnClassYes}
+        value="yes"
+        onClick={this.buttonClick}>Y
+      </button>
     )
   }
 })
 
 var OfferBox = React.createClass({
+  getInitialState: function(){
+    return { selected: [] }
+  }
+  onOfferToggle: function(id, sel)
   handleSubmit: function(data){
     var url = "shifts/" + this.props.shift_id +"/offers"
     $.ajax({
@@ -50,7 +95,11 @@ var OfferBox = React.createClass({
   render: function(){
 
     return(
-      <OfferButtons onSubmit={this.handleSubmit} />
+      <div className="offerButtons">
+        <OfferButtonYes onSubmit={this.handleSubmit} />
+        <OfferButtonMaybe onSubmit={this.handleSubmit} />
+        <OfferButtonNo onSubmit={this.handleSubmit} />
+      </div>
     )
   }
 })

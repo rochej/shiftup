@@ -16,7 +16,11 @@
             .five.columns
               %h1 ShiftUp
             .seven.columns
-              =react_component('LoginBox', url: "/sessions")
+              - if current_user
+                %p.u-pull-right
+                  = "Hello, #{current_user.name}!"
+              - else
+                =react_component('LoginBox', url: "/sessions")
 
 
       = yield

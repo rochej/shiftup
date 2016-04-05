@@ -5,6 +5,7 @@ var Shift = React.createClass({
         <StatusBar covered={this.props.covered}/>
         <p>
           {this.props.giver_name}
+          <br />
           {this.props.datetime}
         </p>
         <OfferBox shift_id={this.props.shift_id} key={this.props.shift_id} />
