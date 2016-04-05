@@ -71,11 +71,7 @@ var OfferButtonYes = React.createClass({
   }
 })
 
-var OfferBox = React.createClass({
-  getInitialState: function(){
-    return { selected: [] }
-  }
-  onOfferToggle: function(id, sel)
+var OfferBox2 = React.createClass({
   handleSubmit: function(data){
     var url = "shifts/" + this.props.shift_id +"/offers"
     $.ajax({
@@ -90,15 +86,14 @@ var OfferBox = React.createClass({
         console.error(status)
       }.bind(this)
     });
-
   },
   render: function(){
 
     return(
       <div className="offerButtons">
-        <OfferButtonYes onSubmit={this.handleSubmit} />
-        <OfferButtonMaybe onSubmit={this.handleSubmit} />
-        <OfferButtonNo onSubmit={this.handleSubmit} />
+        <OfferButtonYes isPressed= {this.state.isPressed} onSubmit={this.handleSubmit} />
+        <OfferButtonMaybe isPressed= {this.state.isPressed} onSubmit={this.handleSubmit} />
+        <OfferButtonNo isPressed= {this.state.isPressed} onSubmit={this.handleSubmit} />
       </div>
     )
   }

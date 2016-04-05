@@ -35,20 +35,21 @@ input
   margin: 5px
 
 .offerYes
+  @extend .offer
   border-color: #33FF98
-
-.selectedYes
-  background-color: #33FF98
+  &.selected
+    background-color: #33FF98
 
 .offerNo
+  @extend .offer
   border-color: #F02C18
-
-.selectedNo
-  background-color: #F02C18
+  &.selected
+    background-color: #F02C18
 
 .offerMaybe
+  @extend .offer
   border-color: #FFA500
+  &.selected
+    background-color: #FFA500
 
-.selectedMaybe
-  background-color: #FFA500
 
