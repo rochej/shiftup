@@ -1,19 +1,31 @@
 $primary: #33C3F0
 
-form
-  display: inline
-  color: black
-input
-  display: inline
-  color: black
+*
+  box-sizing: border-box
 
-.shift
+.loginForm
+  display: inline
+  color: black
+  & input
+    display: inline
+    color: black
+
+.shiftList
+  display: inline-block
+
+.boxy
   height: 150px
   width: 150px
   border: 1px solid $primary
   border-radius: 5px
   margin: 10px
   display: inline-block
+
+.shiftForm
+  @extend .boxy
+  padding: 10px 5px 0 5px
+  & input
+    width: 130px
 
 .statusBar
   height: 20px
