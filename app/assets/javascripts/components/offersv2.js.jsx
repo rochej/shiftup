@@ -51,6 +51,7 @@ var OfferBox = React.createClass({
   buildOfferButtons: function (dataItem){
     return ( < OfferButton
     id={dataItem.id}
+    key={dataItem.id}
     label={dataItem.label}
     value = {dataItem.value}
     className={dataItem.class}

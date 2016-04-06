@@ -2,7 +2,7 @@
 var Shift = React.createClass({
   render: function(){
     return(
-      <div className="shift">
+      <div className="boxy">
         <StatusBar covered={this.props.covered}/>
         <p>
           {this.props.giver_name}
@@ -46,11 +46,52 @@ var ShiftList = React.createClass({
   }
 });
 
+var ShiftForm = React.createClass({
+  getInitialState: function(){
+    return{date: '', time: ''}
+  },
+  handleDateChange: function(e){
+    this.setState({date: e.target.value})
+  },
+  handleTimeChange: function(e){
+    this.setState({time: e.target.value})
+  },
+  handleSubmit: function(e){
+    e.preventDefault();
+    var date = this.state.date.trim();
+    var time = this.state.time.trim();
+    this.props.onShiftSubmit({date: date, time: time});
+    this.setState({date: '', time: ''});
+  },
+  render: function(){
+    return(
+      <form className="shiftForm" onSubmit={this.handleSubmit}>
+        <input
+          type="date"
+          value={this.state.date}
+          onChange={this.handleDateChange}
+        />
+        <input
+          type="time"
+          value={this.state.time}
+          onChange={this.handleTimeChange}
+        />
+        <input
+          type="submit"
+          value="Save"
+          onSubmit={this.handleSubmit}
+        />
+      </form>
+    )
+  }
+})
+
 var ShiftBox = React.createClass({
   loadShiftsFromServer: function(){
     $.ajax({
       url: this.props.url,
       dataType: 'json',
+      type: 'GET',
       cache: false,
       success: function (data){
         this.setState({data: data.shifts});
@@ -67,10 +108,25 @@ var ShiftBox = React.createClass({
     this.loadShiftsFromServer();
     setInterval(this.loadShiftsFromServer, this.props.pollInterval)
   },
-
+  handleShiftSubmit: function(shift){
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: shift,
+      success: function(data){
+        this.setState({data: data.shifts});
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(status);
+      }.bind(this)
+    });
+  },
   render: function(){
     return(
-      <ShiftList data={this.state.data} />
+      <div className="shiftBox">
+        <ShiftList data={this.state.data} /> <ShiftForm onShiftSubmit={this.handleShiftSubmit} />
+      </div>
     );
   }
 })
