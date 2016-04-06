@@ -46,6 +46,20 @@ var ShiftList = React.createClass({
   }
 });
 
+var ShiftFormPlaceholder = React.createClass({
+  handleClick: function(e){
+    e.preventDefault();
+    this.props.onPlusClick();
+  },
+  render: function(){
+    return(
+      <div className="boxy placeholder">
+        <button className="plus" onClick={this.handleClick}> + </button>
+      </div>
+    )
+  }
+})
+
 var ShiftForm = React.createClass({
   getInitialState: function(){
     return{date: '', time: ''}
@@ -102,13 +116,14 @@ var ShiftBox = React.createClass({
     })
   },
   getInitialState: function(){
-    return {data: []};
+    return {data: [], formActive: false};
   },
   componentDidMount: function () {
     this.loadShiftsFromServer();
     setInterval(this.loadShiftsFromServer, this.props.pollInterval)
   },
   handleShiftSubmit: function(shift){
+    this.setState({formActive: false})
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -122,10 +137,19 @@ var ShiftBox = React.createClass({
       }.bind(this)
     });
   },
+  handlePlusClick: function(){
+    this.setState({formActive: true})
+  },
   render: function(){
+    var shiftForm;
+    if (this.state.formActive === false){
+      shiftForm =<ShiftFormPlaceholder onPlusClick={this.handlePlusClick}/>
+    } else {
+      shiftForm =<ShiftForm onShiftSubmit={this.handleShiftSubmit} />
+    }
     return(
       <div className="shiftBox">
-        <ShiftList data={this.state.data} /> <ShiftForm onShiftSubmit={this.handleShiftSubmit} />
+        <ShiftList data={this.state.data} />{shiftForm}
       </div>
     );
   }
