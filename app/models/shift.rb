@@ -5,23 +5,8 @@ class Shift < ActiveRecord::Base
 
   has_one :team, through: :giver, source: :team
 
-  def yes_offers?
-    covered = nil
-    self.offers.each do |offer|
-      covered = true if offer.type == "yes"
-    end
-      covered == true ? self.covered = true : self.covered = false
-  end
-
-  def self.team_shifts(current_user)
-    team_shifts = []
-    @shifts = Shift.all
-    @shifts.each do |shift|
-      if shift.team == current_user.team
-        team_shifts << shift
-      end
-    end
-    return team_shifts
+  def determine_offer_status!
+    self.covered = offers.any?(&:accepted?)
   end
 
 end

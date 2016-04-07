@@ -5,7 +5,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(type: params["type"])
     @offer.shift = @shift
     @offer.offerer = current_user
-    @shift.yes_offers?
+    @shift.determine_offer_status!
     @shift.save
     @offer.save
     render json: @offer
