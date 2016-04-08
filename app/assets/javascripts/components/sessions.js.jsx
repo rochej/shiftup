@@ -39,6 +39,19 @@ var LoginForm = React.createClass({
   }
 })
 
+var LoggedInText = React.createClass({
+  render: function(){
+    return(
+      <div className="u-pull-right">
+        Hello, {this.props.currentUser.name}!
+        <div className='badge'>
+          {this.props.currentUser.points} points so far
+        </div>
+      </div>
+    )
+  }
+})
+
 var LoginBox = React.createClass({
   getInitialState: function(){
     return {data: []};
@@ -60,8 +73,17 @@ var LoginBox = React.createClass({
   },
 
   render: function(){
+    var loginForm;
+    if(this.props.loggedIn != null){
+      loginForm = <LoggedInText currentUser={this.props.loggedIn}/>
+    }
+    else {
+      loginForm = <LoginForm onLoginSubmit={this.handleLoginSubmit} />
+    }
     return(
-      <LoginForm onLoginSubmit={this.handleLoginSubmit}/>
+      <div>
+        {loginForm}
+      </div>
     )
   }
 

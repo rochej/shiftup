@@ -3,6 +3,7 @@ class ShiftsController < ApplicationController
 def index
   if current_user
     @shifts = current_user.team.shifts
+    current_user.compute_points
   else
     @shifts = []
   end
