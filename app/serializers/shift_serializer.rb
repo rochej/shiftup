@@ -6,6 +6,5 @@ class ShiftSerializer < ActiveModel::Serializer
 
   def datetime
     object.datetime.strftime("%a, %b %d %l:%m %p")
-
   end
 end
