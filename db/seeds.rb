@@ -5,8 +5,8 @@ Team.delete_all
 
 t = Team.create(name: "Ladies")
 
-r = User.new(name: "Roche", email: "rochej@gmail.com", password:"password", cell:"13232400224")
-m = User.new(name: "Megs", email: "megsluvstaliv@gmail.com", password: "password", cell:"13232400224")
+r = User.new(name: "Roche", email: "rochej@gmail.com", password:"password", cell:"+13232400224")
+m = User.new(name: "Megs", email: "megsluvstaliv@gmail.com", password: "password", cell:"+13232400224")
 r.team = t
 m.team = t
 

@@ -20,7 +20,7 @@ def create
   datetime = Date.parse(date + " " + time)
   @shift = Shift.create(datetime: datetime, giver: current_user, covered: false)
   @shifts = current_user.team.shifts
-  send_text
+  send_text(@shift)
   respond_to do |format|
     format.html { render 'index' }
     format.json { render json: @shifts}

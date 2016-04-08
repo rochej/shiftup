@@ -1,15 +1,18 @@
 module SMSHelper
 
-  def send_text
-    number_to_send_to = "13232400224"
+  def send_text(shift)
+
+    numbers_to_send_to = shift.giver.team.users.pluck(:cell)
 
     @twilio_client = Twilio::REST::Client.new(ENV['SID'], ENV['AUTH'])
 
-    @twilio_client.account.sms.messages.create(
-      from: ENV['NUM'],
-      to: number_to_send_to,
-      body: "hello!"
-    )
+    numbers_to_send_to.each do |number|
+      @twilio_client.account.sms.messages.create(
+        from: ENV['NUM'],
+        to: number,
+        body: "Help #{shift.name}! Can you cover for them #{shift.datetime}? Reply 'yes', 'no' or 'maybe'."
+      )
+    end
 
   end
 
