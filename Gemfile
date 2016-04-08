@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails_12factor'
 gem 'bundler', '>= 1.8.4'
 
 source 'https://rails-assets.org' do
