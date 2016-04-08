@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'twilio-ruby'
 gem 'rails_12factor'
 gem 'bundler', '>= 1.8.4'
 
@@ -54,6 +55,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do

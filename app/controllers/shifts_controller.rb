@@ -1,4 +1,5 @@
 class ShiftsController < ApplicationController
+  include SMSHelper
 
 def index
   if current_user
@@ -19,10 +20,12 @@ def create
   datetime = Date.parse(date + " " + time)
   @shift = Shift.create(datetime: datetime, giver: current_user, covered: false)
   @shifts = current_user.team.shifts
+  send_text
   respond_to do |format|
     format.html { render 'index' }
     format.json { render json: @shifts}
   end
+
 end
 
 
