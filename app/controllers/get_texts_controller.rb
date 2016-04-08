@@ -1,4 +1,4 @@
-class GetTextsController < ActionController
+class GetTextsController < ApplicationController
 
   def get_text
 
