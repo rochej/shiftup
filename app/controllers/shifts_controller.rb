@@ -1,7 +1,11 @@
 class ShiftsController < ApplicationController
 
 def index
-  @shifts = current_user.team.shifts
+  if current_user
+    @shifts = current_user.team.shifts
+  else
+    @shifts = []
+  end
   respond_to do |format|
     format.html { render 'index'}
     format.json{ render json: @shifts }
