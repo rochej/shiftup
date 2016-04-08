@@ -8,6 +8,7 @@ class OffersController < ApplicationController
 
     @offer = Offer.create(type: params["type"], shift: @shift, offerer: current_user)
     @shift.determine_offer_status!
+    @offer.force_yes!
     @shift.taker = current_user if @offer.accepted?
     @shift.save
     current_user.compute_points

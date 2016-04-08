@@ -8,4 +8,13 @@ class Offer < ActiveRecord::Base
     type=='yes'
   end
 
+  def maybe?
+    type=='maybe'
+  end
+
+  def force_yes!
+    self.type = 'yes' if self.shift.covered == false && self.shift.offers.count == (self.offerer.team.users.count - 1)
+  end
+
+
 end
