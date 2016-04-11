@@ -3,7 +3,7 @@ var Shift = React.createClass({
   render: function(){
     return(
       <div className="boxy">
-        <StatusBar covered={this.props.covered}/>
+        <StatusBar covered={this.props.covered} numOffers={this.props.numOffers}/>
         <p>
           {this.props.giver_name}
           <br />
@@ -25,7 +25,8 @@ var StatusBar = React.createClass({
     }
     return(
       <div className = "statusBar" style={this.props.covered == true ? divGreen : divRed}>
-    </div>
+        <span className = "badge u-pull-right">{this.props.numOffers}</span>
+      </div>
     )
   }
 })
@@ -34,7 +35,7 @@ var ShiftList = React.createClass({
   render: function(){
     var shiftNodes = this.props.data.map(function(shift){
       return(
-         <Shift giver_name={shift.giver.name} datetime={shift.datetime} covered={shift.covered} shift_id={shift.id} key={shift.id}>
+         <Shift giver_name={shift.giver.name} datetime={shift.datetime} covered={shift.covered} shift_id={shift.id} numOffers={shift.offers.length} key={shift.id}>
         </Shift>
       );
     });

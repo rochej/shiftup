@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   has_many :offers, as: :offerer, foreign_key: :offerer_id
 
   def compute_points
-    self.points = shifts_taken.count * 2
+    self.points = shifts_taken.length * 2
   end
 end

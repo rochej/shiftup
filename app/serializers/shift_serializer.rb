@@ -3,6 +3,7 @@ class ShiftSerializer < ActiveModel::Serializer
 
   has_one :giver
   has_one :taker
+  has_many :offers
 
   def datetime
     object.datetime.strftime("%a, %b %d %l:%m %p")
