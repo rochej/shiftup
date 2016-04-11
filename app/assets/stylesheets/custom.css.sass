@@ -1,4 +1,8 @@
 $primary: #33C3F0
+$buff: 5px
+$green: #33FF98
+$yellow: #FFA500
+$red: #F02C18
 
 *
   box-sizing: border-box
@@ -14,6 +18,8 @@ $primary: #33C3F0
   background-color: white
   border-radius: 5px
   color: black
+  padding: 0 $buff 0 $buff
+  margin: $buff
 
 .shiftList
   display: inline-block
@@ -36,7 +42,7 @@ $primary: #33C3F0
     width: 130px
 
 .statusBar
-  height: 20px
+  height: 35px
   width: 100%
 
 
@@ -52,7 +58,7 @@ $primary: #33C3F0
   width: 25px
   height: 25px
   line-height: 25px
-  margin: 5px
+  margin: $buff
 
 .plus
   @extend .offer
@@ -61,20 +67,20 @@ $primary: #33C3F0
 
 .offerYes
   @extend .offer
-  border-color: #33FF98
+  border-color: $green
   &.selected
-    background-color: #33FF98
+    background-color: $green
 
 .offerNo
   @extend .offer
-  border-color: #F02C18
+  border-color: $red
   &.selected
-    background-color: #F02C18
+    background-color: $red
 
 .offerMaybe
   @extend .offer
-  border-color: #FFA500
+  border-color: $yellow
   &.selected
-    background-color: #FFA500
+    background-color: $yellow
 
 
