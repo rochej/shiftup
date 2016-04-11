@@ -17,7 +17,8 @@ class Offer < ActiveRecord::Base
   end
 
   def force_yes!
-    self.type = 'yes' if self.shift.covered == false && self.shift.offers.count == (self.offerer.team.users.count - 1)
+    binding.pry
+    self.type = 'yes' if self.shift.covered == false && self.shift.offers.length == (self.offerer.team.users.length - 1)
   end
 
 
