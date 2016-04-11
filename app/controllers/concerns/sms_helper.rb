@@ -10,7 +10,7 @@ module SMSHelper
       @twilio_client.account.sms.messages.create(
         from: ENV['NUM'],
         to: number,
-        body: "Help #{shift.name}! Can you cover for them #{shift.datetime}? Reply 'yes', 'no' or 'maybe'."
+        body: "Help #{shift.giver.name}! Can you cover for them #{shift.datetime}? Reply 'yes', 'no' or 'maybe'."
       )
     end
 

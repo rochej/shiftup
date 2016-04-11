@@ -6,7 +6,6 @@ describe 'Team', model: true do
     @team.users << User.create(name: "Jack")
     @team.users << User.create(name: "Jill")
     @team.users.first.shifts_given << Shift.create()
-    binding.pry
     @team.save
   end
   it 'exists' do
