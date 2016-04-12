@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe ShiftsController, controller: true do
   before(:all) do
-    @user = User.create(email: "rochej@gmail.com", password: "password", team: Team.create(name:'Giants'))
-    @shift = Shift.create(datetime: Date.today)
-    @user.shifts_given << @shift
+    @user = create(:user_with_shifts_given)
   end
   describe 'get index' do
     it "loads no shifts if user is not logged in" do
@@ -14,7 +12,7 @@ describe ShiftsController, controller: true do
     it "loads shifts if they exist" do
       login(@user)
       get :index
-      expect(assigns(:shifts)).to include(@shift)
+      expect(assigns(:shifts)).to include(@user.shifts_given.first)
     end
     it "renders index template" do
       get :index

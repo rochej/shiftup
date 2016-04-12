@@ -2,10 +2,8 @@ require "rails_helper"
 
 describe 'Shift', model: true do
   before(:all) do
-    @jill = User.create(name: "Jill")
-    @shift = Shift.create(datetime: Date.today)
-    @shift.giver = User.create(name: "Jack")
-    @shift.offers << Offer.new(type:"yes")
+    @shift = create(:shift)
+    @shift.offers << create(:offer)
   end
 
   it "exists" do
