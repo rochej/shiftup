@@ -7,6 +7,7 @@ class Shift < ActiveRecord::Base
 
   def determine_offer_status!
     self.covered = offers.any?(&:accepted?)
+    self.save
   end
 
 end
