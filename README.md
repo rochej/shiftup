@@ -1,4 +1,4 @@
-[Shift-Up on Heroku}(https://shift-up.herokuapp.com/)
+[Shift-Up on Heroku](https://shift-up.herokuapp.com/)
 
 ##User Stories
 
