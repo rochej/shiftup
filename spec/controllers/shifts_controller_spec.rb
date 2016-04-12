@@ -28,9 +28,5 @@ describe ShiftsController, controller: true do
       login(@user)
       expect{post :create, date: Date.today, time: Time.now}.to change(Shift, :count).by(1)
     end
-    # it 'returns list of shifts' do
-    #   expect(:assigns(:shifts))).to include(@shift)
-    # end
-    #
   end
 end
