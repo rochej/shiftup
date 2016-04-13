@@ -1,10 +1,12 @@
 FactoryGirl.define do
   factory :offer do
     type "yes"
+    association :offerer, factory: :user
     association :shift, factory: :shift
   end
   factory :offer_no do
     type "no"
+    association :offerer, factory: :user
     association :shift, factory: :shift
   end
   factory :user do
